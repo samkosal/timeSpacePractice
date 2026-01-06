@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class Practice {
 
-  // Time Complexity:
-  // Space Complexity: 
+  // Time Complexity: O(n)
+  // Space Complexity: O(n)
   public static List<Integer> findEvens(int[] array) {
     List<Integer> evens = new ArrayList<>();
     for (int num : array) {
@@ -17,7 +17,7 @@ public class Practice {
     return evens;
   }
 
-  // Time Complexity:
+  // Time Complexity: O(n)
   // Space Complexity: 
   public static int sumDiagonal(int[][] matrix) {
     int sum = 0;
