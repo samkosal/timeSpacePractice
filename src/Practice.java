@@ -28,8 +28,8 @@ public class Practice {
   }
   
 
-  // Time Complexity: O(n) 
-  // Space Complexity: 
+  // Time Complexity: O(n)
+  // Space Complexity: O(n^2)
   // Does the 'T' look confusing? Consider refreshing on generic methods
   // We'll revisit generics as a class later
   public static <T> Map<T, Integer> countFrequencies(T[] array) {
@@ -41,7 +41,7 @@ public class Practice {
   }
 
   // Time Complexity: O(n^2)
-  // Space Complexity: 
+  // Space Complexity: O(n^2)
   public static List<Integer> evensToSquare(int n) {
     List<Integer> evens = new ArrayList<>();
     for(int i = 0; i <= n*n; i+=2) {
@@ -68,7 +68,23 @@ public class Practice {
   public static int mostCommonTimeEfficient(int[] nums) {
     // TODO: Complete this method with an implementation that runs
     // in O(n) time. n = nums.size()
-    return -1;
+
+    // create a max
+    int max = 0;
+    // create a hashmap
+    HashMap<Integer, Integer> frequencies = new HashMap<>();
+
+    // loop over nums
+    for (int val : nums) {
+      // add into keys and values
+      frequencies.put(val, frequencies.getOrDefault(val, 0) + 1);
+      
+      if (frequencies.get(val) > max) {
+        max = frequencies.get(val);
+      }
+    }
+    
+    return max;
   }
 
   /**
