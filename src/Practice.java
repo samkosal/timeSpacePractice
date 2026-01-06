@@ -70,8 +70,26 @@ public class Practice {
     // TODO: Complete this method with an implementation that runs
     // in O(n) time. n = nums.size()
 
+    // create a max
+    int max = 0;
+    int common = nums[0];
 
-    return -1;
+    // create a hashmap
+    HashMap<Integer, Integer> frequencies = new HashMap<>();
+
+    // loop over nums
+    for (int val : nums) {
+      // add into keys and values
+      int count = frequencies.getOrDefault(val, 0) + 1;
+      frequencies.put(val, count);
+      
+      if (frequencies.get(val) > max) {
+        max = frequencies.get(val);
+        common = val;
+      }
+    }
+    
+    return common;
   }
 
   /**
