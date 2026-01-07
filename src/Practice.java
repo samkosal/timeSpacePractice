@@ -69,27 +69,23 @@ public class Practice {
   public static int mostCommonTimeEfficient(int[] nums) {
     // TODO: Complete this method with an implementation that runs
     // in O(n) time. n = nums.size()
-
-    // create a max
-    int max = 0;
-    int common = nums[0];
-
     // create a hashmap
     HashMap<Integer, Integer> frequencies = new HashMap<>();
 
     // loop over nums
     for (int val : nums) {
       // add into keys and values
-      int count = frequencies.getOrDefault(val, 0) + 1;
-      frequencies.put(val, count);
-      
-      if (frequencies.get(val) > max) {
-        max = frequencies.get(val);
-        common = val;
+      frequencies.put(val, frequencies.getOrDefault(val, 0) + 1);
+    }
+    int max = 0;
+    int highestkey = nums[0];
+    for (Map.Entry<Integer, Integer> entry : frequencies.entrySet()) {
+      if (entry.getValue() > max) {
+        max = entry.getValue();
+        highestkey = entry.getKey();
       }
     }
-    
-    return common;
+    return highestkey;
   }
 
   /**
@@ -110,6 +106,9 @@ public class Practice {
   public static int mostCommonSpaceEfficient(int[] nums) {
     // TODO: Complete this method with an implementation that runs
     // in O(1) space.
+    for (int i = 0; i < nums.length; i++) {
+      
+    }
     return -1;
   }
 }
