@@ -88,6 +88,22 @@ public class Practice {
     return highestkey;
   }
 
+  public static void main(String[] args) {
+    ArrayList<Integer> list = new ArrayList<>();
+    list.add(1);
+    list.add(2);
+    list.add(2);
+    list.add(3);
+    list.add(3);
+    list.add(3);
+    list.add(3);
+    list.add(2);
+    int[] arr = list.stream().mapToInt(i -> i).toArray();
+    System.out.println(mostCommonSpaceEfficient(arr));
+    System.out.println(mostCommonTimeEfficient(arr));
+
+  }
+
   /**
    * Returns the integer that shows up most frequently in an array.
    * If there is a tie, tiebreak by returning the one that shows up first
@@ -106,9 +122,44 @@ public class Practice {
   public static int mostCommonSpaceEfficient(int[] nums) {
     // TODO: Complete this method with an implementation that runs
     // in O(1) space.
-    for (int i = 0; i < nums.length; i++) {
+    int largestnumber = 0;
+    int highestfrequencies = 0;
+    int highestfrequenciesnumber = 0;
+
+    // loop nums array to find the highest number
+    for (int num : nums) {
+      //if the current number is higher than highest number
+      if (num > largestnumber) {
+        // store the number in highestnumber
+        largestnumber = num;
+      }
+    }
+    // loop from 0 to the highest number
+    for (int i = 0; i <= largestnumber; i++) {
+      //store the current interation in current1 (throughout this loop, we are going to see how many time current1 will appear)
+      int current1 = i;
+      int highestcurrentfrequencies = 0;
+      //loop nums array again
+      for (int num : nums) {
+        //if the current1 mathces with the current num number.
+        if (current1 == num) {
+          //increment one into highestcurrentfrequencies
+          highestcurrentfrequencies += 1;
+          //if highestcurrentfrequencies is greater than highestfrequencies
+          if (highestcurrentfrequencies > highestfrequencies) {
+            // set highestfrequencies to highestcurrentfrequencies
+            highestfrequencies = highestcurrentfrequencies;
+            // set highestfrequenciesnumber to current num
+            highestfrequenciesnumber = num;
+          }
+        }
+      }
+      // System.out.println(highestcurrentfrequencies);
       
     }
-    return -1;
+    // System.out.println(highestfrequencies);
+    // System.out.println(highestfrequencies);
+    //return highest frequenciesnumber
+    return highestfrequenciesnumber;
   }
 }
