@@ -93,8 +93,10 @@ public class Practice {
     list.add(2);
     list.add(2);
     list.add(3);
+    list.add(3);
+    list.add(3);
+    list.add(3);
     list.add(2);
-    list.add(1);
     int[] arr = list.stream().mapToInt(i -> i).toArray();
     System.out.println(mostCommonSpaceEfficient(arr));
     System.out.println(mostCommonTimeEfficient(arr));
@@ -119,24 +121,23 @@ public class Practice {
   public static int mostCommonSpaceEfficient(int[] nums) {
     // TODO: Complete this method with an implementation that runs
     // in O(1) space.
-    int highestnumber = 0;
-    int current1 = 0;
-    int highestcurrentfrequencies = 0;
+    int largestnumber = 0;
     int highestfrequencies = 0;
     int highestfrequenciesnumber = 0;
 
     // loop nums array to find the highest number
     for (int num : nums) {
       //if the current number is higher than highest number
-      if (num > highestnumber) {
+      if (num > largestnumber) {
         // store the number in highestnumber
-        highestnumber = num;
+        largestnumber = num;
       }
     }
     // loop from 0 to the highest number
-    for (int i = 0; i < highestnumber; i++) {
+    for (int i = 0; i <= largestnumber; i++) {
       //store the current interation in current1 (throughout this loop, we are going to see how many time current1 will appear)
-      current1 = i;
+      int current1 = i;
+      int highestcurrentfrequencies = 0;
       //loop nums array again
       for (int num : nums) {
         //if the current1 mathces with the current num number.
@@ -152,7 +153,11 @@ public class Practice {
           }
         }
       }
+      // System.out.println(highestcurrentfrequencies);
+      
     }
+    // System.out.println(highestfrequencies);
+    // System.out.println(highestfrequencies);
     //return highest frequenciesnumber
     return highestfrequenciesnumber;
   }
