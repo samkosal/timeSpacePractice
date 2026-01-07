@@ -84,7 +84,7 @@ public class Practice {
         highestkey = entry.getKey();
       }
     }
-    return max;
+    return highestkey;
   }
 
   public static void main(String[] args) {
@@ -96,6 +96,7 @@ public class Practice {
     list.add(2);
     list.add(1);
     int[] arr = list.stream().mapToInt(i -> i).toArray();
+    System.out.println(mostCommonSpaceEfficient(arr));
     System.out.println(mostCommonTimeEfficient(arr));
 
   }
@@ -118,6 +119,41 @@ public class Practice {
   public static int mostCommonSpaceEfficient(int[] nums) {
     // TODO: Complete this method with an implementation that runs
     // in O(1) space.
-    return -1;
+    int highestnumber = 0;
+    int current1 = 0;
+    int highestcurrentfrequencies = 0;
+    int highestfrequencies = 0;
+    int highestfrequenciesnumber = 0;
+
+    // loop nums array to find the highest number
+    for (int num : nums) {
+      //if the current number is higher than highest number
+      if (num > highestnumber) {
+        // store the number in highestnumber
+        highestnumber = num;
+      }
+    }
+    // loop from 0 to the highest number
+    for (int i = 0; i < highestnumber; i++) {
+      //store the current interation in current1 (throughout this loop, we are going to see how many time current1 will appear)
+      current1 = i;
+      //loop nums array again
+      for (int num : nums) {
+        //if the current1 mathces with the current num number.
+        if (current1 == num) {
+          //increment one into highestcurrentfrequencies
+          highestcurrentfrequencies += 1;
+          //if highestcurrentfrequencies is greater than highestfrequencies
+          if (highestcurrentfrequencies > highestfrequencies) {
+            // set highestfrequencies to highestcurrentfrequencies
+            highestfrequencies = highestcurrentfrequencies;
+            // set highestfrequenciesnumber to current num
+            highestfrequenciesnumber = num;
+          }
+        }
+      }
+    }
+    //return highest frequenciesnumber
+    return highestfrequenciesnumber;
   }
 }
