@@ -70,6 +70,9 @@ public class Practice {
     // TODO: Complete this method with an implementation that runs
     // in O(n) time. n = nums.size()
     // create a hashmap
+    if (nums.length == 0) {
+      return 0;
+    }
     HashMap<Integer, Integer> frequencies = new HashMap<>();
 
     // loop over nums
@@ -89,16 +92,7 @@ public class Practice {
   }
 
   public static void main(String[] args) {
-    ArrayList<Integer> list = new ArrayList<>();
-    list.add(1);
-    list.add(2);
-    list.add(2);
-    list.add(3);
-    list.add(3);
-    list.add(3);
-    list.add(3);
-    list.add(2);
-    int[] arr = list.stream().mapToInt(i -> i).toArray();
+    int[] arr = {1, 2, 2, 3, 3, 3, 2};
     System.out.println(mostCommonSpaceEfficient(arr));
     System.out.println(mostCommonTimeEfficient(arr));
 
